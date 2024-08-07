@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Wedding | Template </title>
+        <title>Gabriel Marriage Hall</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
@@ -45,9 +45,17 @@
                             <!-- Logo -->
                             <div class="col-xl-4 col-lg-4">
                                 <div class="logo">
-                                    <a href="index.html"><h3><b style="color: #ff0000;">Gabriel marriage hall</b></p></a>
+                                    <a href="index.html"><img src="./assets/img/logo/logo.png" class="logo" alt="" height="90px"></a>
                                 </div>
                             </div>
+                            <style>
+                                /* Media query for mobile view */
+                                @media (max-width: 768px) {
+                                .logo {
+                                    height: 60px; /* Adjust height automatically to maintain aspect ratio */
+                                }
+                                }
+                            </style>
                             <div class="col-xl-8 col-lg-8 col-md-8">
                                 <!-- Main-menu -->
                                 <div class="main-menu f-right d-none d-lg-block">
@@ -189,46 +197,11 @@
         </div>
         <!-- Gallery-2 img End-->
         <!--? Start map Area-->
-        <section class="contact-sections">
+        <section class="contact-sections my-5">
             <div class="d-area">
                 <div id="map" style="height: 235px; position: relative; overflow: hidden;"></div>
-                <script>
-                    function initMap() {
-                        var uluru = {
-                            lat: -25.363,
-                            lng: 131.044
-                        };
-                        var grayStyles = [{
-                                featureType: "all",
-                                stylers: [{
-                                        saturation: -90
-                                    },
-                                    {
-                                        lightness: 50
-                                    }
-                                ]
-                            },
-                            {
-                                elementType: 'labels.text.fill',
-                                stylers: [{
-                                    color: '#ccdee9'
-                                }]
-                            }
-                        ];
-                        var map = new google.maps.Map(document.getElementById('map'), {
-                            center: {
-                                lat: -31.197,
-                                lng: 150.744
-                            },
-                            zoom: 9,
-                            styles: grayStyles,
-                            scrollwheel: false
-                        });
-                    }
-                </script>
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&amp;callback=initMap">
-                </script>
-            </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52069.5421494744!2d79.05860835095294!3d12.239931059255753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bacc0888c761eeb%3A0x2bbbe52dd9d1f2b2!2sArunachaleswarar%20Temple!5e1!3m2!1sen!2sin!4v1723023436666!5m2!1sen!2sin" width="100%" height="235px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                </script>
+            </div>       
         </section>
         <!--? End map Area -->
     </main>
@@ -243,7 +216,7 @@
                          <div class="single-footer-caption mb-30">
                               <!-- logo -->
                              <div class="footer-logo">
-                                <a href="index.html"><h3><b class="text-light">Gabriel marriage hall</b></p></a>
+                                <a href="index.html"><img src="./assets/img/logo/logo.png" class="bg-light rounded p-2" alt="" height="100px"></a>
                              </div>
                          </div>
                        </div>
@@ -283,8 +256,7 @@
                             <div class="footer-tittle">
                                 <h4>LOCATION</h4>
                                 <ul>
-                                    <li><a href="#">Coloelib.com</a></li>
-                                    <li>+(123) 456 - 7890 - 456 35 W 46nd Street NY</li>
+                                    <li>Tiruvannamalai, Annamalai R.F., Tamil Nadu 606601</li>
                                 </ul>
                             </div>
                         </div>
@@ -298,11 +270,9 @@
                 <div class="footer-border">
                      <div class="row d-flex align-items-center">
                          <div class="col-xl-12 ">
-                             <div class="footer-copy-right text-center">
-                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                             </div>
+                            <div class="footer-copy-right text-center">
+                                <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved  <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Gabriel marriage hall</a></p>
+                            </div>
                          </div>
                      </div>
                 </div>
