@@ -43,50 +43,64 @@
         </div> -->
         <!-- Preloader End -->
 
-<header>
-    <!-- Header Start -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="./assets/img/logo/logo.png" class="logo" alt="" height="90px">
-            </a>
-            <style>
-                /* Media query for mobile view */
-                @media (max-width: 768px) {
-                .logo {
-                    height: 60px; /* Adjust height automatically to maintain aspect ratio */
-                }
-                }
-            </style>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon text-danger"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto" >
-                    <li class="nav-item">
-                        <a class="nav-link px-3 fw-bold " href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-3 fw-bold" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-3 fw-bold" href="gallery.html">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-3 fw-bold" href="booking.html">Guestbook</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-3 fw-bold" href="blog.html">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-3 fw-bold" href="contact.html">Contact Us</a>
-                    </li>
-                </ul>
+        <header>
+            <!-- Header Start -->
+            <div class="header-area">
+                    <div class="main-header header-sticky">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <!-- Logo -->
+                                <div class="col-xl-4 col-lg-4">
+                                    <div class="logo">
+                                        <a href="index.html"><img src="./assets/img/logo/logo.png" class="logo" alt="" height="90px"></a>
+                                    </div>
+                                </div>
+                                <style>
+                                    /* Media query for mobile view */
+                                    @media (max-width: 768px) {
+                                    .logo {
+                                        height: 60px; /* Adjust height automatically to maintain aspect ratio */
+                                    }
+                                    }
+                                </style>
+                                <div class="col-xl-8 col-lg-8 col-md-8">
+                                    <!-- Main-menu -->
+                                    <div class="main-menu f-right d-none d-lg-block">
+                                        <nav>                              
+                                            <ul id="navigation">                                                          
+                                                <li><a href="index.html" style="text-decoration: none;">home</a></li>
+                                                <li><a href="about.html" style="text-decoration: none;">About</a></li>
+                                                <li><a href="gallery.html" style="text-decoration: none;">gallery</a></li>
+                                                <!-- <li><a href="booking.html">Guestbook</a></li> -->
+                                                <!-- <li><a href="blog.html">Blog</a>
+                                                    <ul class="submenu">
+                                                        <li><a href="blog.html">Blog</a></li>
+                                                        <li><a href="single-blog.html">Blog Details</a></li>
+                                                        <li><a href="elements.html">Element</a></li>
+                                                    </ul>
+                                                </li> -->
+                                                <li class="active"><a href="contact.html" style="text-decoration: none;">Contact Us</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div> 
+                                    <style>
+                                        /* Example of active class styling */
+                                        #navigation .active a {
+                                            color: #ff0000; /* Change to your preferred active color */
+                                            font-weight: bold; /* Optional: make the active item bold */
+                                        }
+                                    </style>
+                                </div> 
+                                <!-- Mobile Menu -->
+                                <div class="col-12">
+                                    <div class="mobile_menu d-block d-lg-none"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
-        </div>
-    </nav>
-    <!-- Header End -->
-</header>
+            <!-- Header End -->
+        </header>
 
         <main>
             <!--? slider Area Start-->
