@@ -1,49 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Login Page</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Firebase App (the core Firebase SDK) is always required and must be first -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
-  <!-- Include the Firebase Authentication SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-storage.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login</title>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <style>
-    .login-container {
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #ff2929 ;
+      margin: 0;
+    }
+    form {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
       max-width: 400px;
-      margin: auto;
-      margin-top: 100px;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    form:hover {
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #555;
+      text-align: left;
+      font-weight: 500;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+    input:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+    button {
+      width: 100%;
+      padding: 15px;
+      background-color: #ff2929;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .show-password {
+      display: block;
+      margin-bottom: 20px;
+      cursor: pointer;
+      color: #007bff;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+    .show-password:hover {
+      text-decoration: underline;
+      color: #0056b3;
+    }
+    #error-message {
+      color: red;
+      margin-bottom: 15px;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
-  <div class="container login-container">
-    <h2 class="text-center">Login</h2>
-    <form id="login-form">
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
-      </div>
-      <button type="submit" class="btn btn-primary btn-block">Login</button>
-    </form>
-  </div>
+  <form id="loginForm">
+    <h2>Login Page</h2>
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" required>
+    <span class="show-password" onclick="togglePassword()">Show Password</span>
 
-  <!-- Bootstrap JS, Popper.js, and jQuery -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <button type="submit">Login</button>
+    <div id="error-message"></div>
+  </form>
 
   <script>
-    // Your Firebase configuration
+    // Your web app's Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyAAvXFQ36ggybZpCkkF8ImlliL5o2Nmn8s",
       authDomain: "gabrial-marriage-hall.firebaseapp.com",
@@ -56,30 +119,41 @@
 
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
 
-    // Get a reference to the auth service
-    const auth = firebase.auth();
+    // Get elements
+    const loginForm = document.getElementById('loginForm');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const errorMessage = document.getElementById('error-message');
 
-    // Handle form submission
-    document.getElementById('login-form').addEventListener('submit', function(event) {
-      event.preventDefault();
+    // Toggle password visibility
+    function togglePassword() {
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+      } else {
+        passwordInput.type = 'password';
+      }
+    }
 
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+    // Add login event
+    loginForm.addEventListener('submit', e => {
+      e.preventDefault();
+      
+      const email = emailInput.value;
+      const password = passwordInput.value;
 
-      auth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          console.log('User logged in:', user);
-          // Redirect to the admin dashboard
-          window.location.href = 'admin_dashboard.html';
+      // Sign in user
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(userCredential => {
+          // Clear error message
+          errorMessage.textContent = '';
+          // Redirect to index.html
+          window.location.href = 'Admin Dashboard.html';
         })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.error('Error logging in:', errorCode, errorMessage);
+        .catch(error => {
+          // Display error message and alert
+          errorMessage.textContent = error.message;
+          alert('Incorrect email or password');
         });
     });
   </script>
