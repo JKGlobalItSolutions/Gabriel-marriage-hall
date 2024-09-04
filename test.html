@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Toast Example</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    .toast-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1050; /* Ensure it appears above other elements */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toast-container">
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
+      <div class="toast-body align-items-center d-flex justify-content-center bg-success text-light fs-1">
+        Image uploaded Successfully.
+        <button type="button" class="ml-2 mb-1 close " data-dismiss="toast" aria-label="Close">
+            <span class="text-light" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-success" onclick="showToast()">Show Toast</button>
+
+  <script>
+    function showToast() {
+      $('.toast').toast('show');
+    }
+  </script>
+</body>
+</html>
