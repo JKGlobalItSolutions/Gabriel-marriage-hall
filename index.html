@@ -93,6 +93,51 @@
             </div>
     </div>
     <!-- Header End -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
+
+        const firebaseConfig = {
+        apiKey: "AIzaSyAAvXFQ36ggybZpCkkF8ImlliL5o2Nmn8s",
+        authDomain: "gabrial-marriage-hall.firebaseapp.com",
+        projectId: "gabrial-marriage-hall",
+        storageBucket: "gabrial-marriage-hall.appspot.com",
+        messagingSenderId: "9359649680",
+        appId: "1:9359649680:web:a7816cee79db4283472115",
+        measurementId: "G-CZPNK97B3J"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const firestore = getFirestore(app);
+
+        document.addEventListener('DOMContentLoaded', async () => {
+        const galleryContainer = document.getElementById('galleryContainer');
+        
+        try {
+            const querySnapshot = await getDocs(collection(firestore, 'MarriageHallImages'));
+            querySnapshot.forEach((doc) => {
+            const hotel = doc.data();
+            const card = document.createElement('div');
+            card.classList.add('col-md-6');
+            card.innerHTML = `
+                    <div class="single-gallery mb-30">
+                        <div class="gallery-img" style=" overflow: hidden;">
+                            <img src="${hotel.imageUrl}" alt="Gallery Image 1" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="thumb-content-box">
+                            <div class="thumb-content">
+                                <h3>${hotel.hotelName}</h3>
+                            </div>
+                        </div>
+                    </div>
+            `;
+            galleryContainer.appendChild(card);
+            });
+        } catch (error) {
+            console.error('Error fetching images:', error);
+        }
+        });
+    </script>
 </header>
 <main>
     <!--? Slider Area Start-->
@@ -104,8 +149,8 @@
                     <div class="row d-flex align-items-center">
                         <div class="col-xl-8 col-lg-6 col-md-8 ">
                             <div class="hero__caption">
-                                <span data-animation="fadeInLeft" data-delay=".3s">january 23</span>
-                                <h1 data-animation="fadeInLeft" data-delay=".5s" data-duration="2000ms">Dennis<strong> & </strong> Judith</h1>
+                                <span data-animation="fadeInLeft" data-delay=".3s">December 20</span>
+                                <h1 data-animation="fadeInLeft" data-delay=".5s" data-duration="2000ms">Ranvirs Kapoor<strong> & </strong> Alia Bhatt</h1>
                                 <p data-animation="fadeInLeft" data-delay=".9s">will get married</p>
                             </div>
                         </div>
@@ -282,62 +327,15 @@
         </div>
     </div>
     <!-- Count Down End -->
-    <!--? Gallery Area Start -->
-    <div class="gallery-area section-padding4">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-gallery mb-30">
-                        <div class="gallery-img" style="background-image: url(assets/img/gallery/gallery1.png);">
-                        </div>
-                        <div class="thumb-content-box">
-                            <div class="thumb-content">
-                                <h3>image 01</h3>
-                                <a href="assets/img/gallery/gallery1.png" class="menorie-icon"> <i class="ti-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-6">
-                    <div class="single-gallery mb-30">
-                        <div class="gallery-img" style="background-image: url(assets/img/gallery/gallery2.png);">
-                        </div>
-                        <div class="thumb-content-box">
-                            <div class="thumb-content">
-                                <h3>image 02</h3>
-                                <a href="assets/img/gallery/gallery1.png" class="menorie-icon"> <i class="ti-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-6">
-                    <div class="single-gallery mb-30">
-                        <div class="gallery-img" style="background-image: url(assets/img/gallery/gallery3.png);">
-                        </div>
-                        <div class="thumb-content-box">
-                            <div class="thumb-content">
-                                <h3>image 03</h3>
-                                <a href="assets/img/gallery/gallery1.png" class="menorie-icon"> <i class="ti-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-gallery mb-30">
-                        <div class="gallery-img" style="background-image: url(assets/img/gallery/gallery4.png);">
-                        </div>
-                        <div class="thumb-content-box">
-                            <div class="thumb-content">
-                                <h3>image 04</h3>
-                                <a href="assets/img/gallery/gallery1.png" class="menorie-icon"> <i class="ti-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
+        <!--? Gallery Area Start -->
+        <div class="gallery-area section-padding30">
+            <div class="container">
+                <div class="row" id="galleryContainer">
+
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Gallery Area End -->
+        <!-- Gallery Area End -->
     <!--? Gift Start -->
     <section class="gift-area gift-padding fix" data-background="assets/img/gallery/section_bg3.png">
         <div class="container">

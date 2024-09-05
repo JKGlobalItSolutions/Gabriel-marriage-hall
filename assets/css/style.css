@@ -2714,7 +2714,8 @@ hr {
 }
 
 .slider-area {
-    background-image: url(../img/hero/homeHero_1.jpg);
+    background-image: url(../img/hero/homeHero_2.jpg);
+    height: 80%;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover
